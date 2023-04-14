@@ -31,11 +31,12 @@ const jar = new CookieJar();
 const client = wrapper(axios.create({ jar } as any));
 
 async function main() {
+  debugger;
   const cookies = await jar.getCookies(
     `${process.env.PAYSLIP_HOST}${DOCUMENT_API_ROUTE}`,
   );
   const cookieIndex = cookies.findIndex(
-    (x) => x.key === '.AspNetCore.Identity.Aplication',
+    (x) => x.key === '.AspNetCore.Identity.Application',
   );
 
   if (cookieIndex < 0 || cookies[cookieIndex].TTL(new Date()) < 60000) {
